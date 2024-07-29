@@ -14,10 +14,13 @@ import java.util.Scanner;
  */
 public class Almacen {
     public static void main(String[] args) {
-        char rol;
+        char rol, regresar;
+        int attempts;
         String password;
         final String contraT = "queso";
         Scanner almacen = new Scanner(System.in);
+        
+        do{
         System.out.println("Ingrese como (T)rabajador o (C)liente: ");
         rol = almacen.next().charAt(0);
         rol = Character.toUpperCase(rol);
@@ -25,19 +28,30 @@ public class Almacen {
         switch(rol){
             case 'C':
                 System.out.println("Hola cliente");
-                Cliente.main(args);
-                
+                Cliente.main(args);//Te lleva al main de cliente
                 break;
             case 'T':
-                System.out.println("Ingrese la contrasena: ");
+                attempts = 0;
+                do{
+                System.out.println("Ingrese la contrasena: ");//La contraseña es queso
                 password = almacen.nextLine();
                 if(password.equals(contraT)){
                     Trabajador.main(args);
                 }
                 else{
                     System.out.println("ERROR");
+                    attempts = attempts + 1;
                 }
+                if(attempts >= 5){
+                    System.out.println("Ha pasado el limite de errores, intentelo más tarde");
+                }
+                }while(!password.equals(contraT) && attempts < 5);
                 break;
         }
+        System.out.println("Desea regresar a la seleccion de roles (s/n)");
+        regresar = almacen.next().charAt(0);
+        regresar = Character.toUpperCase(regresar);
+        
+        }while(regresar == 'S');
     }
 }

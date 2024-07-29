@@ -8,7 +8,6 @@ package com.mycompany.almacen;
  *
  * @author kike0
  */
-public abstract interface EstadoEnvio {
-    public void pendiente();
-    public void enviado();
+public interface BarcoEnvio {
+    
 }

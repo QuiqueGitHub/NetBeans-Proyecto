@@ -17,8 +17,8 @@ public class Registro extends Bodega{
     private int mercancia;
     private String producto;
     private String marca;
-    private float preciof = precio * mercancia;
-    private float pesof = (peso / 100) * mercancia;
+    private float preciof;
+    private float pesof;
 
     public Registro() {
         Scanner entrada = new Scanner(System.in);
@@ -34,7 +34,7 @@ public class Registro extends Bodega{
         if (validarFecha()){
            fechaValida = true;
         }else{
-            System.out.print("La fecha ingresada no es valida.Por favor intentalo de nuevo.\n");
+            System.out.print("La fecha ingresada no es valida. Por favor intentalo de nuevo.\n");
         }
     }       
         System.out.println("Ingrese la hora: ");
