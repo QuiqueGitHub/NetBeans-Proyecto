@@ -7,12 +7,12 @@ package com.mycompany.almacen;
 import java.util.Scanner;
 
 
-
 /**
  *
  * @author kike0
  */
 public class Almacen {
+    
     public static void main(String[] args) {
         char rol, regresar;
         int attempts;
@@ -28,7 +28,7 @@ public class Almacen {
         switch(rol){
             case 'C':
                 System.out.println("Hola cliente");
-                Cliente.main(args);//Te lleva al main de cliente
+                Cliente.startMenu();//Te lleva al main de cliente
                 break;
             case 'T':
                 attempts = 0;
@@ -43,14 +43,16 @@ public class Almacen {
                     attempts = attempts + 1;
                 }
                 if(attempts >= 5){
-                    System.out.println("Ha pasado el limite de errores, intentelo más tarde");
+                    System.out.println("Ha pasado el limite de errores, intentelo mas tarde");
                 }
                 }while(!password.equals(contraT) && attempts < 5);
+                //si pasas los 5 intentos, tendras que regresar al menu y volver a intentarlo
                 break;
         }
         System.out.println("Desea regresar a la seleccion de roles (s/n)");
         regresar = almacen.next().charAt(0);
         regresar = Character.toUpperCase(regresar);
+        almacen.nextLine();
         
         }while(regresar == 'S');
     }
