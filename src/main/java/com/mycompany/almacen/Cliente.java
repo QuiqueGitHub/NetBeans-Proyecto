@@ -9,5 +9,5 @@ package com.mycompany.almacen;
  * @author kike0
  */
 public class Cliente {
-    System.out.pritnln("Hola");
+   
 }
