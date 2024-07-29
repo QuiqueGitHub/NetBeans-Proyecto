@@ -11,12 +11,8 @@ import java.util.Scanner;
  * @author kike0
  */
 public class Cliente {
-    
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void startMenu() {
+    public static void main(String[] args) {
         Hashtable<String, String> clientes = new Hashtable<>(10, 0.90f);
         char cuentas;
         int opcion;
@@ -51,17 +47,19 @@ public class Cliente {
                 else{
                         clientes.put(contrasena, nombre);
                         System.out.println("Cuenta creada exitosamente.");
-                        System.out.println("Contrasena hashCode: " + contrasena.hashCode());
+                        System.out.println("Contrasena hashCode: " + contrasena.hashCode() % clientes.size());
                         System.out.println("Contrasena: " + contrasena);
                         System.out.println("Nombre asociado: " + clientes.get(contrasena));
                     }
                     break;
+            default:
+                System.out.println("Opcion NO valida");
         }
         System.out.println("Desea ingresar con otra cuenta (s/n): ");
         cuentas = cliente.next().charAt(0);
         cuentas = Character.toUpperCase(cuentas);
         cliente.nextLine();
-    }while(cuentas == 's');
+    }while(cuentas == 'S');
        
         }
     

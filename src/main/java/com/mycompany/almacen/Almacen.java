@@ -27,8 +27,7 @@ public class Almacen {
         almacen.nextLine();
         switch(rol){
             case 'C':
-                System.out.println("Hola cliente");
-                Cliente.startMenu();//Te lleva al main de cliente
+                Cliente.main(args);//Te lleva al main de cliente
                 break;
             case 'T':
                 attempts = 0;
