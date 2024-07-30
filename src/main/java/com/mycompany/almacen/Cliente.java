@@ -38,10 +38,20 @@ public class Cliente {
                     }
                 break;
             case 2:
+                do{
                 System.out.println("Ingrese el nombre de su nueva cuenta:");
                 nombre = cliente.nextLine();
+                if (ClienteData.clientes.containsValue(nombre)){
+                    System.out.println("Esta nombre YA esta registrado");
+                }
+                }while(ClienteData.clientes.containsValue(nombre));
+                do{
                 System.out.println("Ingrese la contrasena de su nueva cuenta:");
                 contrasena = cliente.nextLine();
+                if (ClienteData.clientes.containsKey(contrasena)){
+                    System.out.println("Esta contrasena YA existe");
+                }
+                }while(ClienteData.clientes.containsKey(contrasena));
                 if(nombre.isEmpty() || contrasena.isEmpty()){//Se necesita registrar algo
                         System.out.println("El nombre y la contrasena no pueden estar vacios.");
                     } 
@@ -50,15 +60,15 @@ public class Cliente {
                         hash = contrasena.hashCode() % ClienteData.clientes.size();
                         NombresCuentas.hashCode = hash;
                         System.out.println("Cuenta creada exitosamente");
-                        System.out.println("Contrasena hashCode: " + hash);
-                        System.out.println("Contrasena: " + contrasena);
                         System.out.println("Nombre: " + ClienteData.clientes.get(contrasena));
+                        System.out.println("Contrasena: " + contrasena);
+                        System.out.println("Contrasena hashCode: " + hash);
                     }
                     break;
             default:
                 System.out.println("Opcion NO valida");
         }
-        System.out.println("Desea ingresar con otra cuenta (s/n): ");
+        System.out.println("Esta listo para iniciar sesion (s/n): ");
         cuentas = cliente.next().charAt(0);
         cuentas = Character.toUpperCase(cuentas);
         cliente.nextLine();
