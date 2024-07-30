@@ -18,6 +18,7 @@ public class ClienteMenu {
         Scanner scan = new Scanner(System.in);
         char menu;
         int acc;
+        Registro nuevoRegistro;
         do{
         System.out.println("Bienvenido " + NombresCuentas.CuentaNombre);//Recibe el nombre del caso 1 en cliente
         System.out.println("    1)Registrar envio");
@@ -28,6 +29,9 @@ public class ClienteMenu {
         scan.nextLine();
         switch(acc){
             case 1:
+                nuevoRegistro = new Registro();
+                Listas.getInventario().add(nuevoRegistro);
+                nuevoRegistro.mostrarOrden();
                 break;
             case 2:
                 break;

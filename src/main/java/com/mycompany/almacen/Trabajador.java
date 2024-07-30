@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package com.mycompany.almacen;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -27,8 +28,25 @@ public class Trabajador {
         trabajador.nextLine();
         switch(opc){
             case 1:
+                 System.out.println("Que transporte quiere registrar (A)vion, (C)amion, (B)arco: ");
+                    char transporte = trabajador.next().charAt(0);
+                    transporte = Character.toUpperCase(transporte);
+                    switch(transporte){
+                        case 'A':
+                            Listas.getVehiculos().add(new Avion());
+                            break;
+                        case 'B':
+                            Listas.getVehiculos().add(new Barco());
+                            break;
+                        case 'C':
+                            Listas.getVehiculos().add(new Camion());
+                            break;
+                        default: 
+                            System.out.println("Opcion NO disponible");
+                    }
                 break;
             case 2:
+                verInventario();
                 break;
             case 3:
                 break;
@@ -37,6 +55,18 @@ public class Trabajador {
         menu = trabajador.next().charAt(0);
         menu = Character.toUpperCase(menu);
         }while(menu == 'S');
+    }
+     
+    public static void verInventario() {
+        LinkedList<Object> inventario = Listas.getInventario();
+        if (inventario.isEmpty()) {
+            System.out.println("El inventario está vacío.");
+        } else {
+            System.out.println("Contenido del inventario:");
+            for (Object item : inventario) {
+                System.out.println(item);
+            }
+        }
     }
     
 }
