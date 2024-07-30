@@ -15,7 +15,7 @@ public class Cliente {
     public static void main(String[] args) {
         Hashtable<String, String> clientes = new Hashtable<>(10, 0.90f);
         char cuentas;
-        int opcion;
+        int opcion, hash;
         String nombre, contrasena, cuenta;
         Scanner cliente = new Scanner(System.in);
         do{
@@ -30,7 +30,8 @@ public class Cliente {
                 contrasena = cliente.nextLine();
                 cuenta = ClienteData.clientes.get(contrasena);
                 if (cuenta != null) {
-                    System.out.println("Nombre asociado: " + cuenta);
+                    NombresCuentas.CuentaNombre = cuenta; //Hace disponible el nombre para el resto de clases
+                    ClienteMenu.main(args); //Llama al menu de opciones para cliente
                 } 
                 else{
                     System.out.println("Esta cuenta no existe");
@@ -41,15 +42,17 @@ public class Cliente {
                 nombre = cliente.nextLine();
                 System.out.println("Ingrese la contrasena de su nueva cuenta:");
                 contrasena = cliente.nextLine();
-                if(nombre.isEmpty() || contrasena.isEmpty()){
+                if(nombre.isEmpty() || contrasena.isEmpty()){//Se necesita registrar algo
                         System.out.println("El nombre y la contrasena no pueden estar vacios.");
                     } 
                 else{
-                        clientes.put(contrasena, nombre);
-                        System.out.println("Cuenta creada exitosamente.");
-                        System.out.println("Contrasena hashCode: " + contrasena.hashCode() % clientes.size());
+                        ClienteData.clientes.put(contrasena, nombre);//Manda los datos a la tabla hash
+                        hash = contrasena.hashCode() % ClienteData.clientes.size();
+                        NombresCuentas.hashCode = hash;
+                        System.out.println("Cuenta creada exitosamente");
+                        System.out.println("Contrasena hashCode: " + hash);
                         System.out.println("Contrasena: " + contrasena);
-                        System.out.println("Nombre asociado: " + clientes.get(contrasena));
+                        System.out.println("Nombre: " + ClienteData.clientes.get(contrasena));
                     }
                     break;
             default:
