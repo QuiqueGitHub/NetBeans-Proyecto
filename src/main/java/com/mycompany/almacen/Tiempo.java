@@ -45,11 +45,12 @@ public class Tiempo {
         folio = Long.parseLong(clave);
     }
      
-      // Método sobrescrito toString
+    // Método sobrescrito toString
     @Override
     public String toString() {
         return "  Folio de la orden: " + folio + "\n" + "  Fecha de resgistro: " + fechaC + "\n" + "  Hora de registro: " + horaC;
     }
+   
      
     public void mostrarFecha(){
         System.out.println(fechaC); 

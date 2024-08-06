@@ -18,6 +18,10 @@ public class Trabajador {
     public static void main(String[] args) {
         int opc;
         char menu;
+        String vehiculo;
+        Avion nuevoAvion;
+        Camion nuevoCamion;
+        Barco nuevoBarco;
         Scanner trabajador = new Scanner(System.in);
         do{
         System.out.println("Sistema de Paqueteria:");
@@ -27,29 +31,35 @@ public class Trabajador {
         opc = trabajador.nextInt();
         trabajador.nextLine();
         switch(opc){
-            case 1:
-                 System.out.println("Que transporte quiere registrar (A)vion, (C)amion, (B)arco: ");
-                    char transporte = trabajador.next().charAt(0);
-                    transporte = Character.toUpperCase(transporte);
-                    switch(transporte){
-                        case 'A':
-                            Listas.getVehiculos().add(new Avion());
-                            break;
-                        case 'B':
-                            Listas.getVehiculos().add(new Barco());
-                            break;
-                        case 'C':
-                            Listas.getVehiculos().add(new Camion());
-                            break;
-                        default: 
-                            System.out.println("Opcion NO disponible");
-                    }
-                break;
-            case 2:
+            case 1 -> {
+                System.out.println("Que transporte quiere registrar (A)vion, (C)amion, (B)arco: ");
+                char transporte = trabajador.next().charAt(0);
+                transporte = Character.toUpperCase(transporte);
+                switch(transporte){
+                    case 'A' -> {
+                        nuevoAvion = new Avion();
+                        Listas.getVehiculos().add(nuevoAvion);
+                        nuevoAvion.mostrarVehiculo();
+                }
+                    case 'B' -> {
+                        vehiculo = "Barco";
+                        nuevoBarco = new Barco();
+                        Listas.getVehiculos().add(nuevoBarco);
+                        nuevoBarco.mostrarVehiculo();
+                }
+                    case 'C' -> {
+                        vehiculo = "Camión";
+                        nuevoCamion = new Camion();
+                        Listas.getVehiculos().add(nuevoCamion);
+                        nuevoCamion.mostrarVehiculo();
+                }
+                    default -> System.out.println("Opcion NO disponible");
+                }
+                }
+            case 2 -> //Resolver que no te guardan los nombres de las cuentas, se encuentra en el toString de Registro
                 verInventario();
-                break;
-            case 3:
-                break;
+            case 3 -> {
+                }
         }
         System.out.println("Desea regresar al menu (s/n): ");
         menu = trabajador.next().charAt(0);
@@ -57,12 +67,13 @@ public class Trabajador {
         }while(menu == 'S');
     }
      
+    //Funcion para acceder a la linkedList de las ordenas hechas por los clientes
     public static void verInventario() {
         LinkedList<Object> inventario = Listas.getInventario();
         if (inventario.isEmpty()) {
-            System.out.println("El inventario está vacío.");
+            System.out.println("No hay ordenes pendientes");
         } else {
-            System.out.println("Contenido del inventario:");
+            System.out.println("Ordenes pendientes:");
             for (Object item : inventario) {
                 System.out.println(item);
             }

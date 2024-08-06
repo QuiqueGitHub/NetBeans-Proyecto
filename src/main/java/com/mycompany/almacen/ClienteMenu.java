@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package com.mycompany.almacen;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -34,8 +35,10 @@ public class ClienteMenu {
                 nuevoRegistro.mostrarOrden();
                 break;
             case 2:
+                verVehiculos();
                 break;
             case 3:
+                //Aqui es donde se usaran las interfaces de java
                 break;
             default:
                 System.out.println("Opcion NO valida");
@@ -47,4 +50,31 @@ public class ClienteMenu {
         }while(menu == 'S');
         
     }
+    
+    public static void verVehiculos() {
+        LinkedList<Object> Vehiculos = Listas.getVehiculos();
+        if (Vehiculos.isEmpty()) {
+            System.out.println("No hay vehiculos disponibles");
+        } else {
+            System.out.println("Vehiculos disponibles:");
+            for (Object item : Vehiculos){
+                //Condicional para solo mostrar los que cumplan con los precios y cargas de los envios registrados
+                System.out.println(item);
+            }
+        }
+    }
+    /*
+    public static void verInventario() {
+        LinkedList<Object> inventario = Listas.getInventario();
+        if (inventario.isEmpty()) {
+            System.out.println("No hay ordenes pendientes");
+        } else {
+            System.out.println("Tus ordenes:");
+            if(this.cuenta)
+            for (Object item : inventario) {
+                System.out.println(item);
+            }
+        }
+    }*/
+    
 }

@@ -15,18 +15,51 @@ public class Camion extends Transporte {
     private Scanner camion;
     
     public Camion(){
+        super();
+        this.tipo = "Camion";
         camion = new Scanner(System.in);
         System.out.println("Con cuantos remolques cuenta: ");
         this.remolques = camion.nextInt();
-        System.out.println("Cuantas casetas cruzara: ");
-        this.casetas = camion.nextInt();
+        
+        this.casetas = this.remolques * 150;
+        
+        calcularPrecio();
     }
     
-    public Camion(String tipo, double carga, double presupuesto, String empresa, String matricula, int remolques, int casetas){
-        super(tipo, carga, presupuesto, empresa, matricula);
+    public Camion(String tipo, double carga, double precio, String empresa, String matricula, int remolques, int casetas){
+        super("Camion", carga, precio, empresa, matricula);
         this.remolques = remolques;
-        this.casetas = casetas;
+        this.casetas = this.remolques * 150;
+        // Calcula el precio basado en los remolques y casetas
+        calcularPrecio();
     }
     
+    private void calcularPrecio() {
+        // Calcula el precio adicional basado en los remolques y casetas
+        this.precio += this.casetas;
+    }
+    
+    @Override
+    public void mostrarVehiculo(){
+        System.out.println("----------------------------------------------------");
+        System.out.println("Tipo de vehiculo: " + this.tipo);
+        System.out.println("Empresa: " + this.empresa);
+        System.out.println("Matricula: " + this.matricula);
+        System.out.println("Carga que soporta: " + this.carga + "kg");
+        System.out.println("Costo por servicio: $" + this.precio);
+        System.out.println("Cantidad de remolques: " + this.remolques);
+        System.out.println("Precio por caseta: " + this.casetas);
+        System.out.println("----------------------------------------------------");
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString() + "\n" + 
+               "  Cantidad de remolques: " + remolques + "\n" + 
+               "  Precio por caseta: " + casetas + "\n" +
+               "----------------------------------------------------";
+    }
 }
+    
+
 

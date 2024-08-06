@@ -8,6 +8,16 @@ package com.mycompany.almacen;
  *
  * @author kike0
  */
-public interface CamionEnvio {
+public class CamionEnvio implements EstadoEnvio {
+    
+    @Override
+    public void pendiente() {
+        System.out.println("Su envio con folio ******* aun esta en espera de ser enviado por via terrestre"); 
+    }
+
+    @Override
+    public void enviado() {
+        System.out.println("Su envio con folio ******* ya fue enviado por via terrestre"); 
+    }
     
 }

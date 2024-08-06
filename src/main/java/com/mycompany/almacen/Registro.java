@@ -17,6 +17,8 @@ public class Registro{
     private String origen;
     private String destino; 
     private float pesof;
+    private String cuenta;
+    
 
     public Registro() {
         Scanner entrada = new Scanner(System.in);
@@ -24,9 +26,9 @@ public class Registro{
         this.setHora(new Tiempo());
         this.setFolio(new Tiempo());
         System.out.print("Que desea transportar: ");
-        producto = entrada.next();
+        producto = entrada.nextLine();
         System.out.print("Ingrese la marca del producto: ");
-        marca = entrada.next();
+        marca = entrada.nextLine();
         System.out.print("Ingrese el peso de su producto por unidad (en kg): ");
         peso = entrada.nextFloat();
         System.out.print("Ingrese la cantidad de su producto: ");
@@ -39,10 +41,12 @@ public class Registro{
         System.out.print("A donde llegara: ");
         destino =entrada.nextLine();
         
+        this.cuenta = NombresCuentas.CuentaNombre;
+        
         this.pesof = this.peso * this.mercancia;
     }
     
-    public Registro(Tiempo hora, Tiempo fecha, Tiempo folio, long presupuesto, float peso, int mercancia, String producto, String marca, String origen, String destino, float pesof){
+    public Registro(Tiempo hora, Tiempo fecha, Tiempo folio, long presupuesto, float peso, int mercancia, String producto, String marca, String origen, String destino, String cuenta, float pesof){
     this.hora = hora;
     this.fecha = fecha;
     this.folio = folio;
@@ -53,6 +57,8 @@ public class Registro{
     this.marca = marca;
     this.origen = origen;
     this.destino = destino;
+    
+    this.cuenta = NombresCuentas.CuentaNombre;
     this.pesof = this.peso * this.mercancia;
     }
     
@@ -72,15 +78,15 @@ public class Registro{
         System.out.println("Presupuesto: $" + this.presupuesto);
         System.out.println("----------------------------------------------------");
     }
-    
+    //el toString sirve para "imprimir" los objetos, y que no solo se muestre la direccion en la memoria de cada objeto
     @Override
     public String toString() {
         return "--------------------------------------------------------------------\n" +
                "  Datos de la orden: " + "\n" +
-               "  Nombre de cuenta: " + NombresCuentas.CuentaNombre + "\n" + folio + "\n" +
+               "  Nombre de cuenta: " + cuenta + "\n" + folio + "\n" +
                "  Saldra de: " + origen + "\n" +
                "  Llegara a: " + destino + "\n" +
-               "  Producto a transportar: " + mercancia + "\n" +
+               "  Cantidad a transportar: " + mercancia + "\n" +
                "  Marca de procuto: " + producto + "\n" +
                "  Peso de la carga: " + pesof + "\n" +
                "  Presupuesto: $" + presupuesto + "\n" +
