@@ -5,7 +5,7 @@
 package com.mycompany.almacen;
 import java.util.Scanner;
 
-public class Registro{
+public final class Registro{
     private Tiempo hora;
     private Tiempo fecha;
     private Tiempo folio;
@@ -16,7 +16,7 @@ public class Registro{
     private String marca;
     private String origen;
     private String destino; 
-    private float pesof;
+    protected float pesof;
     private String cuenta;
     
 
@@ -42,7 +42,6 @@ public class Registro{
         destino =entrada.nextLine();
         
         this.cuenta = NombresCuentas.CuentaNombre;
-        
         this.pesof = this.peso * this.mercancia;
     }
     
@@ -60,7 +59,10 @@ public class Registro{
     
     this.cuenta = NombresCuentas.CuentaNombre;
     this.pesof = this.peso * this.mercancia;
+    
     }
+    
+
     
     public void mostrarOrden(){
         System.out.println("----------------------------------------------------");
@@ -88,11 +90,13 @@ public class Registro{
                "  Llegara a: " + destino + "\n" +
                "  Cantidad a transportar: " + mercancia + "\n" +
                "  Marca de procuto: " + producto + "\n" +
-               "  Peso de la carga: " + pesof + "\n" +
+               "  Peso de la carga: " + pesof + "kg" + "\n" +
                "  Presupuesto: $" + presupuesto + "\n" +
                "---------------------------------------------------------------------"
              ;
-}
+    }
+    
+    
 
     /**
      * @return the hora
@@ -154,7 +158,7 @@ public class Registro{
     /**
      * @return the presupuesto
      */
-    public float getPresupuesto() {
+    public long getPresupuesto() {
         return presupuesto;
     }
 
@@ -241,6 +245,20 @@ public class Registro{
      */
     public void setDestino(String destino) {
         this.destino = destino;
+    }
+
+    /**
+     * @return the cuenta
+     */
+    public String getCuenta() {
+        return cuenta;
+    }
+
+    /**
+     * @param cuenta the cuenta to set
+     */
+    public void setCuenta(String cuenta) {
+        this.cuenta = cuenta;
     }
 
 }

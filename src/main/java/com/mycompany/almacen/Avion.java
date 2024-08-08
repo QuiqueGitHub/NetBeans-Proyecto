@@ -24,7 +24,7 @@ public class Avion  extends Transporte{
         this.motores = avion.nextInt();
     }
     
-    public Avion(String tipo, double carga, double precio, String empresa, String matricula, String modelo, int motores){
+    public Avion(String tipo, double carga, long precio, String empresa, String matricula, String modelo, int motores){
         super("Avion", carga, precio, empresa, matricula);
         this.modelo = modelo;
         this.motores = motores;
@@ -33,11 +33,11 @@ public class Avion  extends Transporte{
     @Override
     public void mostrarVehiculo(){
         System.out.println("----------------------------------------------------");
-        System.out.println("Tipo de vehiculo: " + this.tipo);
-        System.out.println("Empresa: " + this.empresa);
-        System.out.println("Matricula: " + this.matricula);
-        System.out.println("Carga que soporta: " + this.carga + "kg");
-        System.out.println("Costo por servicio: $" + this.precio);
+        System.out.println("Tipo de vehiculo: " + this.getTipo());
+        System.out.println("Empresa: " + this.getEmpresa());
+        System.out.println("Matricula: " + this.getMatricula());
+        System.out.println("Carga que soporta: " + this.getCarga() + "kg");
+        System.out.println("Costo por servicio: $" + this.getPrecio());
         System.out.println("Modelo de la aeronave: " + this.modelo);
         System.out.println("Cantidad de motores: " + this.motores);
         System.out.println("----------------------------------------------------");

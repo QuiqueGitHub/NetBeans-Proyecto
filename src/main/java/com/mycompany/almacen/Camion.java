@@ -26,7 +26,7 @@ public class Camion extends Transporte {
         calcularPrecio();
     }
     
-    public Camion(String tipo, double carga, double precio, String empresa, String matricula, int remolques, int casetas){
+    public Camion(String tipo, double carga, long precio, String empresa, String matricula, int remolques, int casetas){
         super("Camion", carga, precio, empresa, matricula);
         this.remolques = remolques;
         this.casetas = this.remolques * 150;
@@ -36,17 +36,17 @@ public class Camion extends Transporte {
     
     private void calcularPrecio() {
         // Calcula el precio adicional basado en los remolques y casetas
-        this.precio += this.casetas;
+        this.setPrecio(this.getPrecio() + this.casetas);
     }
     
     @Override
     public void mostrarVehiculo(){
         System.out.println("----------------------------------------------------");
-        System.out.println("Tipo de vehiculo: " + this.tipo);
-        System.out.println("Empresa: " + this.empresa);
-        System.out.println("Matricula: " + this.matricula);
-        System.out.println("Carga que soporta: " + this.carga + "kg");
-        System.out.println("Costo por servicio: $" + this.precio);
+        System.out.println("Tipo de vehiculo: " + this.getTipo());
+        System.out.println("Empresa: " + this.getEmpresa());
+        System.out.println("Matricula: " + this.getMatricula());
+        System.out.println("Carga que soporta: " + this.getCarga() + "kg");
+        System.out.println("Costo por servicio: $" + this.getPrecio());
         System.out.println("Cantidad de remolques: " + this.remolques);
         System.out.println("Precio por caseta: " + this.casetas);
         System.out.println("----------------------------------------------------");

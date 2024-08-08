@@ -12,4 +12,5 @@ public class NombresCuentas {
     
     public static String CuentaNombre = null;
     public static int hashCode;
+   
 }

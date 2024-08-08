@@ -14,7 +14,7 @@ public abstract class Transporte{
     protected String empresa;
     protected String matricula;
     protected String tipo;
-    protected double precio;
+    protected long precio;
     protected Scanner transporte;
      
     public Transporte(){
@@ -27,10 +27,10 @@ public abstract class Transporte{
         System.out.println("Matricula: ");
         this.matricula = transporte.nextLine();
         System.out.println("Costo por sevicio: ");
-        this.precio = transporte.nextDouble();
+        this.precio = transporte.nextLong();
     }
     
-    public Transporte(String tipo, double carga, double precio, String empresa, String matricula){
+    public Transporte(String tipo, double carga, long precio, String empresa, String matricula){
         this.tipo = tipo;
         this.carga = carga;
         this.precio = precio;
@@ -45,11 +45,95 @@ public abstract class Transporte{
     @Override
     public String toString() {
         return "---------------------------------------------------------------" + "\n" +
-               "  Tipo de vehiculo: " + tipo + "\n" + 
-               "  Empresa duena del vehiculo: " + empresa + "\n" + 
-               "  Matricula del vehiculo: " + matricula + "\n" +
-               "  Carga que soporta: " + carga + "kg" + "\n" + 
-               "  Precio por uso del vehiculo: $" + precio;
+               "  Tipo de vehiculo: " + getTipo() + "\n" + 
+               "  Empresa duena del vehiculo: " + getEmpresa() + "\n" + 
+               "  Matricula del vehiculo: " + getMatricula() + "\n" +
+               "  Carga que soporta: " + getCarga() + "kg" + "\n" + 
+               "  Precio por uso del vehiculo: $" + getPrecio();
+    }
+
+    /**
+     * @return the carga
+     */
+    public double getCarga() {
+        return carga;
+    }
+
+    /**
+     * @param carga the carga to set
+     */
+    public void setCarga(double carga) {
+        this.carga = carga;
+    }
+
+    /**
+     * @return the empresa
+     */
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    /**
+     * @param empresa the empresa to set
+     */
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    /**
+     * @return the matricula
+     */
+    public String getMatricula() {
+        return matricula;
+    }
+
+    /**
+     * @param matricula the matricula to set
+     */
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    /**
+     * @return the precio
+     */
+    public long getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(long precio) {
+        this.precio = precio;
+    }
+
+    /**
+     * @return the transporte
+     */
+    public Scanner getTransporte() {
+        return transporte;
+    }
+
+    /**
+     * @param transporte the transporte to set
+     */
+    public void setTransporte(Scanner transporte) {
+        this.transporte = transporte;
     }
     
     
