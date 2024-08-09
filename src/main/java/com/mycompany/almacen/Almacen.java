@@ -51,5 +51,6 @@ public class Almacen {
         almacen.nextLine();
         
         }while(regresar == 'S');
+       //Prueba
     }
 }
