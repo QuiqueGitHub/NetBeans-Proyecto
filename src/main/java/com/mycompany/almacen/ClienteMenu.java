@@ -65,6 +65,7 @@ public class ClienteMenu {
         for (int x = 0; x < Listas.getInventario().size(); x++) {
             Registro registro = (Registro) Listas.getInventario().get(x);
             if (folioBusqueda == registro.getFolio().getFolio()) {//Un getFolio() te lleva a registro donde es tipo Tiempo, y el otro getFolio() te lleva al folio en tiempo que ya es tipo long
+                //Si el folio si es encontrado, saca el peso, y presupuesto de esa orden y la envia a otra funcion junto al folio
                 pesof = registro.getPesof();
                 presupuesto = registro.getPresupuesto();
                 folioDispo = registro.getFolio().getFolio();
@@ -75,15 +76,14 @@ public class ClienteMenu {
         
     }
     
-    public static void verVehiculos(float pesof, long presupuesto, long folioDispo) {
+    public static void verVehiculos(float pesof, long presupuesto, long folioDispo) {//<- Aqui se reciben los parametros rescatados en comprobarFolio
         LinkedList<Object> Vehiculos = Listas.getVehiculos();
         if (Vehiculos.isEmpty()) {
             System.out.println("No hay vehiculos disponibles");
         } else {
             System.out.println("Vehiculos que cumplen con los requisitos de tu orden:");
             for (Object item : Vehiculos) {//Recorre el tamaño de la lista
-                if(item instanceof Transporte) {//Se usa instance of para sacar el valor de la cuenta en registro
-                    Transporte vehiculos = (Transporte) item;
+                if(item instanceof Transporte vehiculos) {//Se usa instanceof para sacar el valor de la cuenta en registro
                     if(presupuesto >= vehiculos.getPrecio() && pesof <= vehiculos.getCarga()) {
                         System.out.println(vehiculos);
                     }
@@ -100,8 +100,7 @@ public class ClienteMenu {
         } else {
             System.out.println("Tus ordenes:");
             for (Object item : inventario) {//Recorre el tamaño de la lista
-                if(item instanceof Registro) {//Se usa instance of para sacar el valor de la cuenta en registro
-                    Registro ordenes = (Registro) item;
+                if(item instanceof Registro ordenes) {//Se usa instance of para sacar el valor de la cuenta en registro
                     if (ordenes.getCuenta().equals(NombresCuentas.CuentaNombre)) {
                         System.out.println(ordenes);
                     }

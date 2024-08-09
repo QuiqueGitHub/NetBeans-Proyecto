@@ -33,7 +33,7 @@ public class Barco extends Transporte {
     
     private void calcularPrecio() {
         // Calcula el precio adicional basado en los remolques y casetas
-        this.setPrecio(this.getPrecio() + this.contenedores * 450);
+        this.setPrecio(this.getPrecio() + this.getContenedores() * 450);
     }
      
     @Override
@@ -51,7 +51,35 @@ public class Barco extends Transporte {
      @Override
     public String toString() {
         return super.toString() + "\n" + 
-               "  Cantidad de contenedores: " + contenedores + "\n" + 
+               "  Cantidad de contenedores: " + getContenedores() + "\n" + 
                "----------------------------------------------------";
+    }
+
+    /**
+     * @return the contenedores
+     */
+    public int getContenedores() {
+        return contenedores;
+    }
+
+    /**
+     * @param contenedores the contenedores to set
+     */
+    public void setContenedores(int contenedores) {
+        this.contenedores = contenedores;
+    }
+
+    /**
+     * @return the barco
+     */
+    public Scanner getBarco() {
+        return barco;
+    }
+
+    /**
+     * @param barco the barco to set
+     */
+    public void setBarco(Scanner barco) {
+        this.barco = barco;
     }
 }

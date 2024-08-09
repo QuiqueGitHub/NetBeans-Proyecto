@@ -16,7 +16,7 @@ public final class Registro{
     private String marca;
     private String origen;
     private String destino; 
-    protected float pesof;
+    private float pesof;
     private String cuenta;
     
 
@@ -217,6 +217,13 @@ public final class Registro{
      */
     public float getPesof() {
         return pesof;
+    }
+    
+     /**
+     * @param pesof the origen to set
+     */
+    public void setPesof(float pesof) {
+        this.pesof = this.peso * this.mercancia;
     }
 
     /**

@@ -36,12 +36,12 @@ public class Camion extends Transporte {
     
     private void calcularPrecio() {
         // Calcula el precio adicional basado en los remolques y casetas
-        this.setPrecio(this.getPrecio() + this.casetas);
+        this.setPrecio(this.getPrecio() + this.getCasetas());
     }
     
     @Override
     public void mostrarVehiculo(){
-        System.out.println("----------------------------------------------------");
+       System.out.println("----------------------------------------------------");
         System.out.println("Tipo de vehiculo: " + this.getTipo());
         System.out.println("Empresa: " + this.getEmpresa());
         System.out.println("Matricula: " + this.getMatricula());
@@ -55,9 +55,51 @@ public class Camion extends Transporte {
     @Override
     public String toString() {
         return super.toString() + "\n" + 
-               "  Cantidad de remolques: " + remolques + "\n" + 
-               "  Precio por caseta: " + casetas + "\n" +
+               "  Cantidad de remolques: " + getRemolques() + "\n" + 
+               "  Precio por caseta: " + getCasetas() + "\n" +
                "----------------------------------------------------";
+    }
+
+    /**
+     * @return the remolques
+     */
+    public int getRemolques() {
+        return remolques;
+    }
+
+    /**
+     * @param remolques the remolques to set
+     */
+    public void setRemolques(int remolques) {
+        this.remolques = remolques;
+    }
+
+    /**
+     * @return the casetas
+     */
+    public int getCasetas() {
+        return casetas;
+    }
+
+    /**
+     * @param casetas the casetas to set
+     */
+    public void setCasetas(int casetas) {
+        this.casetas = casetas;
+    }
+
+    /**
+     * @return the camion
+     */
+    public Scanner getCamion() {
+        return camion;
+    }
+
+    /**
+     * @param camion the camion to set
+     */
+    public void setCamion(Scanner camion) {
+        this.camion = camion;
     }
 }
     

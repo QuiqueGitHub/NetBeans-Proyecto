@@ -18,7 +18,6 @@ public class Trabajador {
     public static void main(String[] args) {
         int opc;
         char menu;
-        String vehiculo;
         Avion nuevoAvion;
         Camion nuevoCamion;
         Barco nuevoBarco;
@@ -42,13 +41,11 @@ public class Trabajador {
                         nuevoAvion.mostrarVehiculo();
                 }
                     case 'B' -> {
-                        vehiculo = "Barco";
                         nuevoBarco = new Barco();
                         Listas.getVehiculos().add(nuevoBarco);
                         nuevoBarco.mostrarVehiculo();
                 }
                     case 'C' -> {
-                        vehiculo = "Camión";
                         nuevoCamion = new Camion();
                         Listas.getVehiculos().add(nuevoCamion);
                         nuevoCamion.mostrarVehiculo();

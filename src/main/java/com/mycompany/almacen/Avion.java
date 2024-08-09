@@ -46,9 +46,51 @@ public class Avion  extends Transporte{
     @Override
     public String toString() {
         return super.toString() + "\n" + 
-               "  Modelo de la aeronave: " + modelo + "\n" + 
-               "  Motores de la aeronave: " + motores + "\n" +
+               "  Modelo de la aeronave: " + getModelo() + "\n" + 
+               "  Motores de la aeronave: " + getMotores() + "\n" +
                "----------------------------------------------------";
+    }
+
+    /**
+     * @return the modelo
+     */
+    public String getModelo() {
+        return modelo;
+    }
+
+    /**
+     * @param modelo the modelo to set
+     */
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    /**
+     * @return the motores
+     */
+    public int getMotores() {
+        return motores;
+    }
+
+    /**
+     * @param motores the motores to set
+     */
+    public void setMotores(int motores) {
+        this.motores = motores;
+    }
+
+    /**
+     * @return the avion
+     */
+    public Scanner getAvion() {
+        return avion;
+    }
+
+    /**
+     * @param avion the avion to set
+     */
+    public void setAvion(Scanner avion) {
+        this.avion = avion;
     }
     
     
