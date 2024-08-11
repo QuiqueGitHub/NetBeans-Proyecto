@@ -16,6 +16,7 @@ public final class Registro{
     private String marca;
     private String origen;
     private String destino; 
+    private String vehiculo; 
     private float pesof;
     private String cuenta;
     
@@ -43,9 +44,10 @@ public final class Registro{
         
         this.cuenta = NombresCuentas.CuentaNombre;
         this.pesof = this.peso * this.mercancia;
+        this.vehiculo = "Aun no se ha seleccionado un vehiculo para el traslado";
     }
     
-    public Registro(Tiempo hora, Tiempo fecha, Tiempo folio, long presupuesto, float peso, int mercancia, String producto, String marca, String origen, String destino, String cuenta, float pesof){
+    public Registro(Tiempo hora, Tiempo fecha, Tiempo folio, long presupuesto, float peso, int mercancia, String producto, String marca, String origen, String destino, String cuenta,String vehiculo, float pesof){
     this.hora = hora;
     this.fecha = fecha;
     this.folio = folio;
@@ -59,7 +61,7 @@ public final class Registro{
     
     this.cuenta = NombresCuentas.CuentaNombre;
     this.pesof = this.peso * this.mercancia;
-    
+    this.vehiculo = "Aun no se ha seleccionado un vehiculo para el traslado";
     }
     
 
@@ -92,6 +94,7 @@ public final class Registro{
                "  Marca de procuto: " + producto + "\n" +
                "  Peso de la carga: " + pesof + "kg" + "\n" +
                "  Presupuesto: $" + presupuesto + "\n" +
+               "  Vehiculo solicitado: " + vehiculo + "\n" +
                "---------------------------------------------------------------------"
              ;
     }
@@ -266,6 +269,20 @@ public final class Registro{
      */
     public void setCuenta(String cuenta) {
         this.cuenta = cuenta;
+    }
+
+    /**
+     * @return the vehiculo
+     */
+    public String getVehiculo() {
+        return vehiculo;
+    }
+
+    /**
+     * @param vehiculo the vehiculo to set
+     */
+    public void setVehiculo(String vehiculo) {
+        this.vehiculo = vehiculo;
     }
 
 }

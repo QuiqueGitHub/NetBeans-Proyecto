@@ -53,10 +53,15 @@ public class Trabajador {
                     default -> System.out.println("Opcion NO disponible");
                 }
                 }
-            case 2 -> //Resolver que no te guardan los nombres de las cuentas, se encuentra en el toString de Registro
+            case 2 -> 
                 verInventario();
-            case 3 -> {
-                }
+            case 3 -> 
+                //Solo pon que tengas que escribir la contraseña anterior
+                //Que solo salga el PRIMER elemento de la lsita inventario
+                //Al poner la contraseña se elimine de las listas la orden
+                System.out.println("Opcion NO disponible");
+            
+            default -> System.out.println("Opcion NO disponible");
         }
         System.out.println("Desea regresar al menu (s/n): ");
         menu = trabajador.next().charAt(0);

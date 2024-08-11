@@ -21,7 +21,7 @@ public class Tiempo {
     private String horaC;
     private String fechaC;
     private String clave;
-    protected long folio;
+    private long folio;
     private Calendar Hora = Calendar.getInstance();
     private Calendar Fecha = Calendar.getInstance();
 
