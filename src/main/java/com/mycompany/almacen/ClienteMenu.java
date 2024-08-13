@@ -16,7 +16,7 @@ public class ClienteMenu {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LinkedList<Object> Vehiculos = Listas.getVehiculos();
+        LinkedList<Transporte> Vehiculos = Listas.getVehiculos();
         Scanner scan = new Scanner(System.in);
         String matricula;
         char menu;
@@ -27,7 +27,7 @@ public class ClienteMenu {
         System.out.println("Bienvenido " + NombresCuentas.CuentaNombre);//Recibe el nombre del caso 1 en cliente
         System.out.println("    1)Registrar envio");
         System.out.println("    2)Ver vehiculos disponibles");
-        System.out.println("    3)Mis ordenes");
+        System.out.println("    3)Mi historial");
         System.out.println("    4)Ver estado de mis ordenes");
         System.out.println("Que desea realizar: ");
         acc = scan.nextInt();
@@ -36,6 +36,7 @@ public class ClienteMenu {
             case 1 -> {
                 nuevoRegistro = new Registro();
                 Listas.getInventario().add(nuevoRegistro);
+                Listas.getHistorial().add(nuevoRegistro);
                 nuevoRegistro.mostrarOrden();
                 }
             case 2 -> {
@@ -49,9 +50,10 @@ public class ClienteMenu {
                     System.out.println("Ingresa la matricula del vehiculo que quiera seleccionar");
                     matricula = scan.nextLine();
                     comprobarMatricula(matricula, folioBusqueda);
+                   // Listas.getHistorial().add(nuevoRegistro);
                 }
             }
-            case 3 -> verInventario();
+            case 3 -> verHistorial();
             case 4 -> {
                 //Aqui es donde se usaran las interfaces de java
             }
@@ -97,27 +99,39 @@ public class ClienteMenu {
                 break;
             }
         }
+        
         if(existe){
-            apartarVehiculo(matricula, folioBusqueda);
+            vehiculoOcupado(matricula, folioBusqueda);
         }
         if(!existe){
             System.out.println("Matricula de vehiculo NO encontrada");
         }
     }
     
+    public static void vehiculoOcupado(String matricula, long folioBusqueda){
+        boolean ocupado;
+        ocupado = Listas.getInventario().stream().noneMatch(v -> v.getVehiculo().equals(matricula));
+        if(!ocupado){
+            System.out.println("Por el momento este vehiculo esta ocupado. Intentelo mas tarde");
+        }else{
+            apartarVehiculo(matricula, folioBusqueda);
+        }
+        
+    }
+    
     public static void apartarVehiculo(String matricula,long folioBusqueda){
-        LinkedList<Object> inventario = Listas.getInventario();
+        LinkedList<Registro> inventario = Listas.getInventario();
         for(Object item: inventario){
             Registro ordenes = (Registro) item;
             if (folioBusqueda == ordenes.getFolio().getFolio()) {//Un getFolio() te lleva a registro donde es tipo Tiempo, y el otro getFolio() te lleva al folio en tiempo que ya es tipo long
-                //Si el folio si es encontrado, saca el peso, y presupuesto de esa orden y la envia a otra funcion junto al folio
+                //Si el folio si es encontrado, cambia el atributo setMatricula a la matricula ingresada por el cliente
                 ordenes.setVehiculo(matricula);
             }
         }   
     }
     
     public static void verVehiculos(float pesof, long presupuesto, long folioDispo) {//<- Aqui se reciben los parametros rescatados en comprobarFolio
-        LinkedList<Object> Vehiculos = Listas.getVehiculos();
+        LinkedList<Transporte> Vehiculos = Listas.getVehiculos();
         if (Vehiculos.isEmpty()) {
             System.out.println("No hay vehiculos disponibles");
         } else {
@@ -133,13 +147,13 @@ public class ClienteMenu {
     }
     
     //Se imprimen las ordenes que solo tengan el nombre de la cuenta correcto dentro del registro
-      public static void verInventario() {
-        LinkedList<Object> inventario = Listas.getInventario();
-        if (inventario.isEmpty()) {
+      public static void verHistorial() {
+        LinkedList<Object> historial = Listas.getHistorial();
+        if (historial.isEmpty()) {
             System.out.println("No hay ordenes pendientes");
         } else {
             System.out.println("Tus ordenes:");
-            for (Object item : inventario) {//Recorre el tamaño de la lista
+            for (Object item : historial) {//Recorre el tamaño de la lista
                 if(item instanceof Registro ordenes) {//Se usa instance of para sacar el valor de la cuenta en registro
                     if (ordenes.getCuenta().equals(NombresCuentas.CuentaNombre)) {
                         System.out.println(ordenes);
