@@ -55,11 +55,10 @@ public class Trabajador {
                 }
             case 2 -> 
                 verInventario();
-            case 3 -> 
-                //Solo pon que tengas que escribir la contraseña anterior
-                //Que solo salga el PRIMER elemento de la lsita inventario
-                //Al poner la contraseña se elimine de las listas la orden
-                System.out.println("Opcion NO disponible");
+            case 3 -> {
+                ProcesarEnvios();
+                
+            }
             
             default -> System.out.println("Opcion NO disponible");
         }
@@ -71,13 +70,36 @@ public class Trabajador {
      
     //Funcion para acceder a la linkedList de las ordenas hechas por los clientes
     public static void verInventario() {
-        LinkedList<Object> inventario = Listas.getInventario();
+        LinkedList<Registro> inventario = Listas.getInventario();
         if (inventario.isEmpty()) {
             System.out.println("No hay ordenes pendientes");
         } else {
             System.out.println("Ordenes pendientes:");
             for (Object item : inventario) {
                 System.out.println(item);
+            }
+        }
+    }
+    
+    //Solo imprime las ordenes que ya hayan seleccionado un vehiculo
+    public static void ProcesarEnvios() {
+        LinkedList<Registro> inventario = Listas.getInventario();
+        boolean primero = false;
+        if (inventario.isEmpty()) {
+            System.out.println("No hay ordenes pendientes");
+        } else {
+            System.out.println("Ordenes pendientes:");
+            for (Object item : inventario) {
+                if(item instanceof Registro orden){
+                    //si el vehiculo dentro de orden es distinto al mensaje preestablecido (el de abajo), se imprimen
+                    if(!orden.getVehiculo().equals("Aun no se ha seleccionado un vehiculo para el traslado")){
+                        if(!primero){
+                        Listas.getInventario().get(0);
+                        System.out.println(orden);
+                        primero = true;
+                        }
+                    }
+                }
             }
         }
     }
